@@ -1,0 +1,14 @@
+#titulo{
+    text-align: center;
+}
+
+#mapid{
+    border-radius: 5px;
+    height:750px;
+}
+#cajamapa{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: rgb(233, 152, 1);
+}
