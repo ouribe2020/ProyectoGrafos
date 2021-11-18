@@ -5,22 +5,9 @@ L.tileLayer(tilesProvider,{
     maxZoom: 18,
 }).addTo(mapa)
 
-
-var lat = (document.getElementById("lat").dataset.lat).split(',');
-var lon = (document.getElementById("lon").dataset.lon).split(',');
-
-
-
-L.marker([lat[10],lon[10]]).addTo(mapa)
-L.marker([lat[11],lon[11]]).addTo(mapa)
-L.marker([lat[12],lon[12]]).addTo(mapa)
-L.marker([lat[13],lon[13]]).addTo(mapa)
-L.marker([lat[14],lon[14]]).addTo(mapa)
-L.marker([lat[15],lon[15]]).addTo(mapa)
-L.marker([lat[16],lon[16]]).addTo(mapa)
-L.marker([lat[17],lon[17]]).addTo(mapa)
-
-
-//L.polyline([pais['fra'], pais['bel']], {color: 'red'}).addTo(mapa);
-
+for(var i=0; i < myVar.length-1; i++){
+    L.marker(myVar[i], {color: 'blue',radius: 10}).addTo(mapa);
+    L.polyline([myVar[i], myVar[i+1]], {color: 'red'}).addTo(mapa);
+}       
+    //L.polyline([pais['fra'], pais['bel']], {color: 'red'}).addTo(mapa);
 
