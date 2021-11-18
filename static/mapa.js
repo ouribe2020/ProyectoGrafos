@@ -6,19 +6,21 @@ L.tileLayer(tilesProvider,{
 }).addTo(mapa)
 
 
-var pais = {'spa':[46.23,2.21],
-            'fra':[40.0,-4.21],
-            'bel':[50.83 ,4.0]}
-
-L.marker(pais['spa']).addTo(mapa).bindPopup('France');
-L.marker(pais['fra']).addTo(mapa).bindPopup('Spain');
-L.marker(pais['bel']).addTo(mapa).bindPopup('Belga');
-
-L.polyline([pais['fra'], pais['bel']], {color: 'red'}).addTo(mapa);
+var lat = (document.getElementById("lat").dataset.lat).split(',');
+var lon = (document.getElementById("lon").dataset.lon).split(',');
 
 
 
-//'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png'
+L.marker([lat[10],lon[10]]).addTo(mapa)
+L.marker([lat[11],lon[11]]).addTo(mapa)
+L.marker([lat[12],lon[12]]).addTo(mapa)
+L.marker([lat[13],lon[13]]).addTo(mapa)
+L.marker([lat[14],lon[14]]).addTo(mapa)
+L.marker([lat[15],lon[15]]).addTo(mapa)
+L.marker([lat[16],lon[16]]).addTo(mapa)
+L.marker([lat[17],lon[17]]).addTo(mapa)
 
+
+//L.polyline([pais['fra'], pais['bel']], {color: 'red'}).addTo(mapa);
 
 
