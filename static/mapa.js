@@ -5,9 +5,12 @@ L.tileLayer(tilesProvider,{
     maxZoom: 18,
 }).addTo(mapa)
 
-for(var i=0; i < myVar.length-1; i++){
-    L.marker(myVar[i], {color: 'blue',radius: 10}).addTo(mapa);
-    L.polyline([myVar[i], myVar[i+1]], {color: 'red'}).addTo(mapa);
-}       
-    //L.polyline([pais['fra'], pais['bel']], {color: 'red'}).addTo(mapa);
 
+var datos = JSON.parse(document.getElementById("datos").dataset.datos);
+var pesos = []
+//datos.length-1
+for(var i=0; i < 10; i++){
+    L.marker(datos[i]).addTo(mapa);
+    L.polyline([datos[i], datos[i+1]], {color: 'pink'}).addTo(mapa); 
+    pesos.push(Math.round(mapa.distance(datos[i],datos[i+1])/1000000));
+}

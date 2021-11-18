@@ -8,12 +8,12 @@ app =Flask(__name__)
 x, src = covid19(cache = False, verbose = False,raw = False,start = date(2021,4,13),end = "2021-04-13")
 paises = []
 
-a = list(x['latitude'])
-b = list(x['longitude'])
+lat = list(x['latitude'])
+lon = list(x['longitude'])
 
 for x in range(len(x)):
-    if(math.isnan(a[x]) != True and math.isnan(b[x]) != True):
-        paises.append([a[x], b[x]])
+    if (not math.isnan(lat[x])) & (not math.isnan(lat[x])):
+        paises.append([lat[x],lon[x]])
 
 @app.route('/')
 def index():
