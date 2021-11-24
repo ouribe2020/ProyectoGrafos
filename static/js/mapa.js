@@ -36,7 +36,4 @@ function getDis(data1,data2){
     return Math.round((L.GeometryUtil.length([latlng2, latlng1]))/1000);
 }
 
-document.getElementById("formPesos").onclick = function () {
-    document.getElementById("pesos").value = pesos;
-}
 
