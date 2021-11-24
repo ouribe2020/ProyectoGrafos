@@ -11,19 +11,27 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/leaflet-src.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/Label.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/leaflet.label.js') }}"></script>
+    <script src="https://npmcdn.com/leaflet-geometryutil"></script>
     
 
 </head>
 <body>
     <div id="titulo">
         <h1>Teoria de Grafos</h1>
-        <h3>Proyecto Covid-19 </h3>    
-    </div>
+        <h3>Proyecto Covid-19 </h3>  
+
+    <form action="/" method="POST" id='formPesos'>
+        <input id="pesos" name="pesos" type="hidden">
+        <input type="submit" value="VER LA MAGIA CTM!!!!">
+    </form>
+    <br>
+    
     <div id="cajamapa">
         <div id='mapid'></div> 
     </div>
 
     <div  id='datos' data-datos='{{datos|tojson}}'></div>
+    </div>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/mapa.js') }}"></script>
 </html>

@@ -1,31 +1,39 @@
 
 const tilesProvider = 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}'  
-let mapa = L.map('mapid').setView([52.9228487,17.2842787], 4)
+let mapa = L.map('mapid').setView([27.6408952,-7.8692974], 3)
 L.tileLayer(tilesProvider,{
     maxZoom: 18,
 }).addTo(mapa)
 
 
+var pesos = new Array(10);
+for (var i = 0; i < pesos.length; i++) {
+    pesos[i] = new Array(2);
+}
 var datos = JSON.parse(document.getElementById("datos").dataset.datos);
-var pesos = []
-//datos.length-1
-for(var i=0; i < datos.length-1; i++){
-    pesos.push(getDis(datos[i], datos[i+1]))
-    var vertice = new L.polyline([datos[i], datos[i+1]],{color: 'red'});
-    vertice.bindLabel(`${pesos[i]}`,{permanent: true});
-    vertice.addTo(mapa); 
+
+for (var i=0; i < datos.length; i++){
     L.marker(datos[i]).addTo(mapa);
+    for(var j=0; j < datos.length; j++){
+        if (i != j){
+            pesos[i][j] = (getDis(datos[i], datos[j]));
+            var vertice = new L.polyline([datos[i], datos[j]],{color: 'red'});
+            vertice.bindLabel(`${pesos[i][j]}`);
+            vertice.addTo(mapa);
+        }               
+    }
+}    
+
+var pesos = [...new Set([].concat(...pesos))];
+
+
+function getDis(data1,data2){
+    var latlng1 = L.latLng(data1)
+    var latlng2 = L.latLng(data2)
+    return Math.round((L.GeometryUtil.length([latlng2, latlng1]))/1000);
 }
 
-function getDis(cord1, cord2) {
-    var lon1 = ((cord1[1])*Math.PI/180)
-        lat1 = ((cord1[0])*Math.PI/180)
-        lon2 = ((cord2[1])*Math.PI/180)
-        lat2 = ((cord2[0])*Math.PI/180)
-
-    var c = Math.pow(Math.sin((lat2 - lat1)/2), 2) + Math.cos(lat1)
-    var d = Math.cos(lat2) * Math.pow(Math.sin(lon2 - lon1/2), 2);
-    return Math.round((2 * Math.asin(Math.sqrt(c*d))*6371000)/1000)
+document.getElementById("formPesos").onclick = function () {
+    document.getElementById("pesos").value = pesos;
 }
-
 
