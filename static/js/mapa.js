@@ -9,7 +9,7 @@ L.tileLayer(tilesProvider,{
 var datos = JSON.parse(document.getElementById("datos").dataset.datos);
 var pesos = []
 //datos.length-1
-for(var i=0; i < 2; i++){
+for(var i=0; i < datos.length-1; i++){
     pesos.push(getDis(datos[i], datos[i+1]))
     var vertice = new L.polyline([datos[i], datos[i+1]],{color: 'red'});
     vertice.bindLabel(`${pesos[i]}`,{permanent: true});
