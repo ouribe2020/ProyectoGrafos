@@ -11,6 +11,9 @@ for (var i = 0; i < pesos.length; i++) {
     pesos[i] = new Array(2);
 }
 var datos = JSON.parse(document.getElementById("datos").dataset.datos);
+var data = JSON.parse(document.getElementById("data").dataset.data);
+
+console.log(data)
 
 for (var i=0; i < datos.length; i++){
     L.marker(datos[i]).addTo(mapa);
