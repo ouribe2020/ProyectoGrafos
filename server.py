@@ -26,32 +26,12 @@ for x in range(len(df)):
         nomb.append(name[x])
         
 data = datamst.mst(nomb, paises)
-mst = []
-tuplas=[]
-for i in data:
-    tuplas.append(list(i))
 
-for i in tuplas:
-    y, src = covid19(i,cache = False, verbose = False,raw = False,start = date(2021,4,13))
-    lat2 = list(y['latitude'])    
-    lon2 = list(y['longitude'])
-    for i in range(2):
-        if (not math.isnan(lat2[i])) & (not math.isnan(lon2[i])):
-            mst.append([lat2[i],lon2[i]])
-
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 @app.route('/', methods = ['GET','POST'])
 def index():
     if request.method == 'GET':
         global paises, data 
-<<<<<<< HEAD
         return render_template('index.html', datos=paises, data = data, nomb=nomb)
-=======
-        return render_template('index.html', datos=paises, data = mst)
->>>>>>> main
     else:     
         pesos = request.form['pesos']
         print(pesos)
