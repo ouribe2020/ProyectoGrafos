@@ -12,9 +12,9 @@ x, src = covid19(cache = False, verbose = False,raw = False,start = date(2021,4,
 paises = []
 nomb = []
 
-df = x[x.currency == 'EUR'] 
-df =  df.sort_values('confirmed',ascending=False)
-#df = df[:1]
+#df = x[x.currency == 'EUR'] 
+df =  x.sort_values('confirmed',ascending=False)
+df = df[:15]
 
 lat = list(df['latitude'])    
 lon = list(df['longitude'])
@@ -27,15 +27,11 @@ for x in range(len(df)):
         
 data = datamst.mst(nomb, paises)
 
-@app.route('/', methods = ['GET','POST'])
+@app.route('/')
 def index():
-    if request.method == 'GET':
-        global paises, data 
-        return render_template('index.html', datos=paises, data = data, nomb=nomb)
-    else:     
-        pesos = request.form['pesos']
-        print(pesos)
-        return render_template('index.html', datos=paises)   
+    global paises, data 
+    return render_template('index.html', datos=paises, data = data, nomb=nomb)
+
 
 if __name__ == '__main__':
     app.run(debug = True, port=4000)
